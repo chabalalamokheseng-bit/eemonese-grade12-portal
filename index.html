@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EEMONESE Grade 12 Learning Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e40af',
+            secondary: '#0ea5e9',
+            accent: '#10b981',
+            dark: '#0f172a'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .glass { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+    .sidebar-link.active { background: #1e40af; color: white; }
+    .pdf-viewer { height: 80vh; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <!-- ========== LANDING PAGE ========== -->
+  <div id="landing" class="min-h-screen flex flex-col">
+    <header class="bg-primary text-white shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-primary font-bold text-xl">E</div>
+          <div>
+            <h1 class="text-xl font-bold tracking-tight">EEMONESE</h1>
+            <p class="text-xs text-blue-200">Grade 12 Learning Portal</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <button onclick="showPage('login')" class="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition">Login</button>
+          <button onclick="showPage('register')" class="px-4 py-2 rounded-lg bg-accent hover:bg-emerald-600 transition font-medium">Register as Student</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <!-- Hero -->
+      <section class="bg-gradient-to-br from-primary via-blue-700 to-secondary text-white py-20 px-4">
+        <div class="max-w-5xl mx-auto text-center">
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Your Complete<br>Grade 12 Learning Hub</h2>
+          <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">Access notes, past papers, assignments and resources organised by subject. Login with your Student ID and start learning.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onclick="showPage('register')" class="px-8 py-4 bg-accent hover:bg-emerald-600 rounded-xl font-semibold text-lg shadow-lg transition">Get Your Student ID</button>
+            <button onclick="showPage('login')" class="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 rounded-xl font-semibold text-lg transition">Student / Instructor Login</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="py-16 px-4 max-w-6xl mx-auto">
+        <h3 class="text-3xl font-bold text-center mb-12 text-dark">Everything you need for Grade 12</h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover">
+            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-3xl mb-5">📚</div>
+            <h4 class="text-xl font-bold mb-3">Learning Materials</h4>
+            <p class="text-slate-600">Notes, past papers, assignments and videos organised by subject and year. View online or download for offline study.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover">
+            <div class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center text-3xl mb-5">🔐</div>
+            <h4 class="text-xl font-bold mb-3">Student ID Login</h4>
+            <p class="text-slate-600">Register once and receive your unique 10-digit Student ID. Use it every time to access your personal dashboard.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover">
+            <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center text-3xl mb-5">👨‍🏫</div>
+            <h4 class="text-xl font-bold mb-3">Instructor Control</h4>
+            <p class="text-slate-600">Teachers upload resources, see all registered learners by year, and organise content by subject and category.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="bg-slate-100 py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h3 class="text-3xl font-bold text-center mb-12">How it works</h3>
+          <div class="space-y-6">
+            <div class="flex gap-5 items-start">
+              <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">1</div>
+              <div>
+                <h4 class="font-bold text-lg">Register as a learner</h4>
+                <p class="text-slate-600">Enter your name, grade and year. The system instantly generates your unique 10-digit Student ID.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">2</div>
+              <div>
+                <h4 class="font-bold text-lg">Login with Student ID + Password</h4>
+                <p class="text-slate-600">Access your personal dashboard showing all subjects and available materials for your academic year.</p>
+              </div>
+            </div>
+            <div class="flex gap-5 items-start">
+              <div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold shrink-0">3</div>
+              <div>
+                <h4 class="font-bold text-lg">Learn anytime</h4>
+                <p class="text-slate-600">Open documents in the browser or download them. Everything is organised by subject so you can focus on studying.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-dark text-slate-400 py-8 text-center text-sm">
+      <p>© 2026 EEMONESE Grade 12 Learning Portal · Built for learners</p>
+    </footer>
+  </div>
+
+  <!-- ========== REGISTER PAGE ========== -->
+  <div id="register" class="hidden min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-100 to-blue-50">
+    <div class="w-full max-w-md">
+      <div class="text-center mb-8">
+        <button onclick="showPage('landing')" class="text-primary font-medium hover:underline mb-4 inline-block">← Back to Home</button>
+        <h2 class="text-3xl font-bold text-dark">Student Registration</h2>
+        <p class="text-slate-500 mt-2">Get your unique 10-digit Student ID</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-xl p-8 border border-slate-100">
+        <form id="registerForm" onsubmit="handleRegister(event)" class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+            <input type="text" id="regName" required placeholder="Thabo Mokoena" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition">
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Grade</label>
+              <select id="regGrade" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary outline-none">
+                <option value="12">Grade 12</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Academic Year</label>
+              <select id="regYear" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary outline-none">
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2025">2025</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">School / Class (optional)</label>
+            <input type="text" id="regSchool" placeholder="EEMONESE High School" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary outline-none">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Phone or Email (optional)</label>
+            <input type="text" id="regContact" placeholder="071 234 5678" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary outline-none">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Create Password</label>
+            <input type="password" id="regPassword" required minlength="4" placeholder="At least 4 characters" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary outline-none">
+          </div>
+          <button type="submit" class="w-full py-3.5 bg-primary hover:bg-blue-800 text-white font-semibold rounded-xl transition shadow-lg">Register & Get Student ID</button>
+        </form>
+        <p class="text-center text-sm text-slate-500 mt-6">Already have an account? <button onclick="showPage('login')" class="text-primary font-medium hover:underline">Login here</button></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== LOGIN PAGE ========== -->
+  <div id="login" class="hidden min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-100 to-blue-50">
+    <div class="w-full max-w-md">
+      <div class="text-center mb-8">
+        <button onclick="showPage('landing')" class="text-primary font-medium hover:underline mb-4 inline-block">← Back to Home</button>
+        <h2 class="text-3xl font-bold text-dark">Login</h2>
+        <p class="text-slate-500 mt-2">Students use Student ID · Instructors use special credentials</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-xl p-8 border border-slate-100">
+        <!-- Tabs -->
+        <div class="flex mb-6 bg-slate-100 rounded-xl p-1">
+          <button id="tabStudent" onclick="setLoginTab('student')" class="flex-1 py-2.5 rounded-lg font-medium bg-white shadow text-primary">Student</button>
+          <button id="tabInstructor" onclick="setLoginTab('instructor')" class="flex-1 py-2.5 rounded-lg font-medium text-slate-500">Instructor</button>
+        </div>
+
+        <!-- Student Login -->
+        <form id="studentLoginForm" onsubmit="handleStudentLogin(event)" class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Student ID (10 digits)</label>
+            <input type="text" id="loginStudentId" required pattern="[0-9]{10}" placeholder="2026001234" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary outline-none tracking-wider">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+            <input type="password" id="loginPassword" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary outline-none">
+          </div>
+          <button type="submit" class="w-full py-3.5 bg-primary hover:bg-blue-800 text-white font-semibold rounded-xl transition">Login as Student</button>
+        </form>
+
+        <!-- Instructor Login -->
+        <form id="instructorLoginForm" onsubmit="handleInstructorLogin(event)" class="space-y-5 hidden">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Instructor Username</label>
+            <input type="text" id="instUsername" required placeholder="instructor" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary outline-none">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+            <input type="password" id="instPassword" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary outline-none">
+          </div>
+          <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition">Login as Instructor</button>
+          <p class="text-xs text-slate-500 text-center">Demo credentials: <strong>instructor</strong> / <strong>eemonese2026</strong></p>
+        </form>
+
+        <p class="text-center text-sm text-slate-500 mt-6">New student? <button onclick="showPage('register')" class="text-primary font-medium hover:underline">Register here</button></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== SUCCESS / SHOW STUDENT ID ========== -->
+  <div id="regSuccess" class="hidden min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-emerald-50 to-blue-50">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 text-center border border-emerald-100">
+      <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center text-4xl mx-auto mb-6">✓</div>
+      <h2 class="text-2xl font-bold text-dark mb-2">Registration Successful!</h2>
+      <p class="text-slate-600 mb-6">Your unique Student ID has been created. Please save it carefully.</p>
+      <div class="bg-slate-100 rounded-xl py-5 px-4 mb-6">
+        <p class="text-sm text-slate-500 mb-1">Your Student ID</p>
+        <p id="generatedId" class="text-3xl font-bold tracking-widest text-primary"></p>
+      </div>
+      <p class="text-sm text-slate-500 mb-6">You will use this ID + your password to login from now on.</p>
+      <button onclick="showPage('login')" class="w-full py-3.5 bg-primary hover:bg-blue-800 text-white font-semibold rounded-xl transition">Go to Login</button>
+    </div>
+  </div>
+
+  <!-- ========== STUDENT DASHBOARD ========== -->
+  <div id="studentDash" class="hidden min-h-screen bg-slate-100">
+    <header class="bg-primary text-white shadow">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-primary font-bold">E</div>
+          <div>
+            <p class="font-bold">EEMONESE Portal</p>
+            <p class="text-xs text-blue-200" id="stuWelcome">Welcome</p>
+          </div>
+        </div>
+        <button onclick="logout()" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm transition">Logout</button>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <div class="bg-white rounded-2xl shadow-sm p-6 mb-8 border border-slate-100">
+        <h2 class="text-2xl font-bold text-dark" id="stuNameDisplay">Student Dashboard</h2>
+        <p class="text-slate-500" id="stuMeta">Grade 12 · 2026</p>
+      </div>
+
+      <!-- Subjects Grid -->
+      <h3 class="text-lg font-semibold mb-4 text-slate-700">Your Subjects</h3>
+      <div id="subjectsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10"></div>
+
+      <!-- Materials Section -->
+      <div id="materialsSection" class="hidden">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-semibold text-slate-700" id="materialsTitle">Materials</h3>
+          <button onclick="hideMaterials()" class="text-sm text-primary hover:underline">← Back to Subjects</button>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+          <div class="flex border-b border-slate-100 overflow-x-auto">
+            <button onclick="filterMaterials('all')" class="mat-tab px-5 py-3 text-sm font-medium border-b-2 border-primary text-primary whitespace-nowrap">All</button>
+            <button onclick="filterMaterials('Notes')" class="mat-tab px-5 py-3 text-sm font-medium text-slate-500 hover:text-primary whitespace-nowrap">Notes</button>
+            <button onclick="filterMaterials('Past Papers')" class="mat-tab px-5 py-3 text-sm font-medium text-slate-500 hover:text-primary whitespace-nowrap">Past Papers</button>
+            <button onclick="filterMaterials('Assignments')" class="mat-tab px-5 py-3 text-sm font-medium text-slate-500 hover:text-primary whitespace-nowrap">Assignments</button>
+            <button onclick="filterMaterials('Videos')" class="mat-tab px-5 py-3 text-sm font-medium text-slate-500 hover:text-primary whitespace-nowrap">Videos</button>
+          </div>
+          <div id="materialsList" class="divide-y divide-slate-100"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== INSTRUCTOR DASHBOARD ========== -->
+  <div id="instructorDash" class="hidden min-h-screen bg-slate-100">
+    <header class="bg-emerald-700 text-white shadow">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-primary font-bold">I</div>
+          <div>
+            <p class="font-bold">Instructor Panel</p>
+            <p class="text-xs text-emerald-200">EEMONESE Grade 12</p>
+          </div>
+        </div>
+        <button onclick="logout()" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm transition">Logout</button>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <!-- Tabs -->
+      <div class="flex gap-2 mb-8 overflow-x-auto">
+        <button onclick="showInstTab('students')" id="instTabStudents" class="inst-tab px-5 py-2.5 rounded-xl bg-emerald-700 text-white font-medium text-sm whitespace-nowrap">Registered Students</button>
+        <button onclick="showInstTab('upload')" id="instTabUpload" class="inst-tab px-5 py-2.5 rounded-xl bg-white text-slate-600 font-medium text-sm whitespace-nowrap border">Upload Materials</button>
+        <button onclick="showInstTab('materials')" id="instTabMaterials" class="inst-tab px-5 py-2.5 rounded-xl bg-white text-slate-600 font-medium text-sm whitespace-nowrap border">All Materials</button>
+      </div>
+
+      <!-- Students Tab -->
+      <div id="instStudents" class="space-y-4">
+        <div class="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
+          <h2 class="text-xl font-bold text-dark">Registered Learners</h2>
+          <div class="flex gap-2">
+            <select id="filterYear" onchange="renderStudents()" class="px-3 py-2 rounded-lg border border-slate-200 text-sm">
+              <option value="all">All Years</option>
+              <option value="2026">2026</option>
+              <option value="2027">2027</option>
+              <option value="2025">2025</option>
+            </select>
+            <input type="text" id="searchStudent" oninput="renderStudents()" placeholder="Search name or ID..." class="px-3 py-2 rounded-lg border border-slate-200 text-sm w-48">
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-50 text-slate-600">
+              <tr>
+                <th class="text-left px-5 py-3 font-medium">Student ID</th>
+                <th class="text-left px-5 py-3 font-medium">Full Name</th>
+                <th class="text-left px-5 py-3 font-medium">Year</th>
+                <th class="text-left px-5 py-3 font-medium">School</th>
+                <th class="text-left px-5 py-3 font-medium">Registered</th>
+              </tr>
+            </thead>
+            <tbody id="studentsTableBody" class="divide-y divide-slate-100"></tbody>
+          </table>
+          <p id="noStudents" class="p-8 text-center text-slate-400 hidden">No students registered yet.</p>
+        </div>
+      </div>
+
+      <!-- Upload Tab -->
+      <div id="instUpload" class="hidden">
+        <h2 class="text-xl font-bold text-dark mb-6">Upload Learning Material</h2>
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 max-w-2xl">
+          <form id="uploadForm" onsubmit="handleUpload(event)" class="space-y-5">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-1">Academic Year</label>
+                <select id="upYear" class="w-full px-4 py-2.5 rounded-xl border border-slate-200">
+                  <option value="2026">2026</option>
+                  <option value="2027">2027</option>
+                  <option value="2025">2025</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Subject</label>
+                <select id="upSubject" class="w-full px-4 py-2.5 rounded-xl border border-slate-200">
+                  <option>Mathematics</option>
+                  <option>Physical Sciences</option>
+                  <option>Life Sciences</option>
+                  <option>English</option>
+                  <option>Life Orientation</option>
+                  <option>Accounting</option>
+                  <option>Business Studies</option>
+                  <option>History</option>
+                  <option>Geography</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Category</label>
+              <select id="upCategory" class="w-full px-4 py-2.5 rounded-xl border border-slate-200">
+                <option>Notes</option>
+                <option>Past Papers</option>
+                <option>Assignments</option>
+                <option>Videos</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Title</label>
+              <input type="text" id="upTitle" required placeholder="e.g. Trigonometry Chapter 3 Notes" class="w-full px-4 py-2.5 rounded-xl border border-slate-200">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">File URL or Description</label>
+              <input type="text" id="upFileUrl" required placeholder="Paste Google Drive / Dropbox link or description" class="w-full px-4 py-2.5 rounded-xl border border-slate-200">
+              <p class="text-xs text-slate-400 mt-1">For real files later we will connect Firebase Storage. For now paste any public link (PDF, Drive, YouTube etc.)</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">Or select a local file (demo – stores temporarily)</label>
+              <input type="file" id="upFile" accept=".pdf,.doc,.docx,.ppt,.pptx,.mp4,.png,.jpg" class="w-full text-sm">
+            </div>
+            <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition">Upload Material</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- All Materials Tab -->
+      <div id="instMaterials" class="hidden">
+        <h2 class="text-xl font-bold text-dark mb-6">All Uploaded Materials</h2>
+        <div id="instMaterialsList" class="space-y-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== DOCUMENT VIEWER MODAL ========== -->
+  <div id="viewerModal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col">
+      <div class="flex justify-between items-center px-5 py-4 border-b">
+        <h3 id="viewerTitle" class="font-semibold truncate">Document</h3>
+        <div class="flex gap-2">
+          <a id="viewerDownload" href="#" target="_blank" class="px-3 py-1.5 bg-primary text-white text-sm rounded-lg hover:bg-blue-800">Download / Open</a>
+          <button onclick="closeViewer()" class="px-3 py-1.5 bg-slate-200 text-sm rounded-lg hover:bg-slate-300">Close</button>
+        </div>
+      </div>
+      <div class="flex-1 overflow-auto p-4 bg-slate-100">
+        <iframe id="viewerFrame" class="w-full h-[70vh] rounded-lg bg-white" frameborder="0"></iframe>
+        <p id="viewerFallback" class="text-center text-slate-500 py-10 hidden">This file type cannot be previewed. Use the Download / Open button.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-dark text-white px-5 py-3 rounded-xl shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50"></div>
+
+  <script>
+    // ==================== DATA LAYER (localStorage) ====================
+    const SUBJECTS = [
+      { name: 'Mathematics', icon: '📐', color: 'bg-blue-500' },
+      { name: 'Physical Sciences', icon: '⚛️', color: 'bg-purple-500' },
+      { name: 'Life Sciences', icon: '🧬', color: 'bg-emerald-500' },
+      { name: 'English', icon: '📖', color: 'bg-amber-500' },
+      { name: 'Life Orientation', icon: '🧭', color: 'bg-rose-500' },
+      { name: 'Accounting', icon: '💰', color: 'bg-cyan-500' },
+      { name: 'Business Studies', icon: '📊', color: 'bg-indigo-500' },
+      { name: 'History', icon: '🏛️', color: 'bg-orange-500' },
+      { name: 'Geography', icon: '🌍', color: 'bg-teal-500' }
+    ];
+
+    function getStudents() {
+      return JSON.parse(localStorage.getItem('eemonese_students') || '[]');
+    }
+    function saveStudents(arr) {
+      localStorage.setItem('eemonese_students', JSON.stringify(arr));
+    }
+    function getMaterials() {
+      return JSON.parse(localStorage.getItem('eemonese_materials') || '[]');
+    }
+    function saveMaterials(arr) {
+      localStorage.setItem('eemonese_materials', JSON.stringify(arr));
+    }
+    function getNextIdCounter(year) {
+      const key = 'eemonese_counter_' + year;
+      let counter = parseInt(localStorage.getItem(key) || '0');
+      counter++;
+      localStorage.setItem(key, counter);
+      return counter;
+    }
+    function generateStudentId(year) {
+      const seq = getNextIdCounter(year);
+      return year + String(seq).padStart(6, '0');
+    }
+
+    // Seed demo materials if empty
+    function seedDemoData() {
+      if (getMaterials().length === 0) {
+        const demo = [
+          { id: 1, year: '2026', subject: 'Mathematics', category: 'Notes', title: 'Trigonometry - Complete Notes', fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', uploadedAt: new Date().toISOString() },
+          { id: 2, year: '2026', subject: 'Mathematics', category: 'Past Papers', title: 'June 2025 Exam Paper', fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', uploadedAt: new Date().toISOString() },
+          { id: 3, year: '2026', subject: 'Physical Sciences', category: 'Notes', title: 'Chemical Equilibrium Notes', fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', uploadedAt: new Date().toISOString() },
+          { id: 4, year: '2026', subject: 'Life Sciences', category: 'Past Papers', title: 'November 2025 Paper 1', fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', uploadedAt: new Date().toISOString() },
+          { id: 5, year: '2026', subject: 'English', category: 'Notes', title: 'Poetry Analysis Guide', fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', uploadedAt: new Date().toISOString() }
+        ];
+        saveMaterials(demo);
+      }
+    }
+    seedDemoData();
+
+    // ==================== AUTH STATE ====================
+    let currentUser = null;
+    let currentSubject = null;
+    let currentMatFilter = 'all';
+
+    // ==================== NAVIGATION ====================
+    function showPage(page) {
+      ['landing','register','login','regSuccess','studentDash','instructorDash'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+      document.getElementById(page).classList.remove('hidden');
+      window.scrollTo(0,0);
+    }
+
+    function setLoginTab(type) {
+      document.getElementById('tabStudent').className = type === 'student' 
+        ? 'flex-1 py-2.5 rounded-lg font-medium bg-white shadow text-primary' 
+        : 'flex-1 py-2.5 rounded-lg font-medium text-slate-500';
+      document.getElementById('tabInstructor').className = type === 'instructor' 
+        ? 'flex-1 py-2.5 rounded-lg font-medium bg-white shadow text-primary' 
+        : 'flex-1 py-2.5 rounded-lg font-medium text-slate-500';
+      document.getElementById('studentLoginForm').classList.toggle('hidden', type !== 'student');
+      document.getElementById('instructorLoginForm').classList.toggle('hidden', type !== 'instructor');
+    }
+
+    // ==================== REGISTER ====================
+    function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const grade = document.getElementById('regGrade').value;
+      const year = document.getElementById('regYear').value;
+      const school = document.getElementById('regSchool').value.trim();
+      const contact = document.getElementById('regContact').value.trim();
+      const password = document.getElementById('regPassword').value;
+
+      const students = getStudents();
+      const studentId = generateStudentId(year);
+
+      const newStudent = {
+        studentId,
+        fullName: name,
+        grade,
+        academicYear: year,
+        school,
+        contact,
+        password, // In real app: never store plain text! Use Firebase Auth
+        role: 'learner',
+        createdAt: new Date().toISOString()
+      };
+
+      students.push(newStudent);
+      saveStudents(students);
+
+      document.getElementById('generatedId').textContent = studentId;
+      showPage('regSuccess');
+      document.getElementById('registerForm').reset();
+      showToast('Registration successful!');
+    }
+
+    // ==================== LOGIN ====================
+    function handleStudentLogin(e) {
+      e.preventDefault();
+      const id = document.getElementById('loginStudentId').value.trim();
+      const pass = document.getElementById('loginPassword').value;
+
+      const students = getStudents();
+      const student = students.find(s => s.studentId === id && s.password === pass);
+
+      if (!student) {
+        showToast('Invalid Student ID or password', true);
+        return;
+      }
+
+      currentUser = student;
+      localStorage.setItem('eemonese_session', JSON.stringify(student));
+      openStudentDashboard();
+    }
+
+    function handleInstructorLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('instUsername').value.trim();
+      const pass = document.getElementById('instPassword').value;
+
+      // Demo credentials
+      if (user === 'instructor' && pass === 'eemonese2026') {
+        currentUser = { role: 'instructor', fullName: 'Instructor' };
+        localStorage.setItem('eemonese_session', JSON.stringify(currentUser));
+        openInstructorDashboard();
+      } else {
+        showToast('Invalid instructor credentials', true);
+      }
+    }
+
+    function logout() {
+      currentUser = null;
+      localStorage.removeItem('eemonese_session');
+      showPage('landing');
+    }
+
+    // ==================== STUDENT DASHBOARD ====================
+    function openStudentDashboard() {
+      showPage('studentDash');
+      document.getElementById('stuWelcome').textContent = 'Welcome, ' + currentUser.fullName.split(' ')[0];
+      document.getElementById('stuNameDisplay').textContent = currentUser.fullName;
+      document.getElementById('stuMeta').textContent = `Grade ${currentUser.grade} · Academic Year ${currentUser.academicYear} · ID: ${currentUser.studentId}`;
+
+      // Render subjects
+      const grid = document.getElementById('subjectsGrid');
+      grid.innerHTML = SUBJECTS.map(s => `
+        <button onclick="openSubject('${s.name}')" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 card-hover text-left flex items-center gap-4">
+          <div class="w-14 h-14 ${s.color} rounded-xl flex items-center justify-center text-2xl text-white">${s.icon}</div>
+          <div>
+            <h4 class="font-bold text-dark">${s.name}</h4>
+            <p class="text-sm text-slate-500">View materials</p>
+          </div>
+        </button>
+      `).join('');
+
+      document.getElementById('materialsSection').classList.add('hidden');
+      document.getElementById('subjectsGrid').classList.remove('hidden');
+    }
+
+    function openSubject(subject) {
+      currentSubject = subject;
+      document.getElementById('subjectsGrid').classList.add('hidden');
+      document.getElementById('materialsSection').classList.remove('hidden');
+      document.getElementById('materialsTitle').textContent = subject + ' Materials';
+      currentMatFilter = 'all';
+      renderMaterials();
+    }
+
+    function hideMaterials() {
+      document.getElementById('materialsSection').classList.add('hidden');
+      document.getElementById('subjectsGrid').classList.remove('hidden');
+    }
+
+    function filterMaterials(cat) {
+      currentMatFilter = cat;
+      document.querySelectorAll('.mat-tab').forEach(t => {
+        t.classList.remove('border-primary', 'text-primary');
+        t.classList.add('text-slate-500');
+      });
+      event.target.classList.add('border-primary', 'text-primary');
+      event.target.classList.remove('text-slate-500');
+      renderMaterials();
+    }
+
+    function renderMaterials() {
+      const materials = getMaterials().filter(m => 
+        m.subject === currentSubject && 
+        m.year === currentUser.academicYear &&
+        (currentMatFilter === 'all' || m.category === currentMatFilter)
+      );
+
+      const list = document.getElementById('materialsList');
+      if (materials.length === 0) {
+        list.innerHTML = `<div class="p-10 text-center text-slate-400">No materials available yet for this category.</div>`;
+        return;
+      }
+
+      list.innerHTML = materials.map(m => `
+        <div class="px-5 py-4 flex items-center justify-between hover:bg-slate-50">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-xl">
+              ${m.category === 'Videos' ? '🎬' : m.category === 'Past Papers' ? '📝' : m.category === 'Assignments' ? '📋' : '📄'}
+            </div>
+            <div>
+              <p class="font-medium text-dark">${m.title}</p>
+              <p class="text-xs text-slate-500">${m.category} · ${new Date(m.uploadedAt).toLocaleDateString()}</p>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="viewDocument('${m.fileUrl}', '${m.title.replace(/'/g, "\\'")}')" class="px-3 py-1.5 text-sm bg-primary text-white rounded-lg hover:bg-blue-800">View</button>
+            <a href="${m.fileUrl}" target="_blank" download class="px-3 py-1.5 text-sm bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200">Download</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ==================== INSTRUCTOR DASHBOARD ====================
+    function openInstructorDashboard() {
+      showPage('instructorDash');
+      showInstTab('students');
+    }
+
+    function showInstTab(tab) {
+      document.getElementById('instStudents').classList.add('hidden');
+      document.getElementById('instUpload').classList.add('hidden');
+      document.getElementById('instMaterials').classList.add('hidden');
+      document.getElementById('inst' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.remove('hidden');
+
+      document.querySelectorAll('.inst-tab').forEach(t => {
+        t.classList.remove('bg-emerald-700', 'text-white');
+        t.classList.add('bg-white', 'text-slate-600', 'border');
+      });
+      document.getElementById('instTab' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.remove('bg-white', 'text-slate-600', 'border');
+      document.getElementById('instTab' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('bg-emerald-700', 'text-white');
+
+      if (tab === 'students') renderStudents();
+      if (tab === 'materials') renderInstMaterials();
+    }
+
+    function renderStudents() {
+      let students = getStudents();
+      const yearFilter = document.getElementById('filterYear').value;
+      const search = document.getElementById('searchStudent').value.toLowerCase();
+
+      if (yearFilter !== 'all') students = students.filter(s => s.academicYear === yearFilter);
+      if (search) students = students.filter(s => 
+        s.fullName.toLowerCase().includes(search) || s.studentId.includes(search)
+      );
+
+      const tbody = document.getElementById('studentsTableBody');
+      const noMsg = document.getElementById('noStudents');
+
+      if (students.length === 0) {
+        tbody.innerHTML = '';
+        noMsg.classList.remove('hidden');
+        return;
+      }
+      noMsg.classList.add('hidden');
+
+      tbody.innerHTML = students.map(s => `
+        <tr class="hover:bg-slate-50">
+          <td class="px-5 py-3 font-mono font-medium text-primary">${s.studentId}</td>
+          <td class="px-5 py-3">${s.fullName}</td>
+          <td class="px-5 py-3">${s.academicYear}</td>
+          <td class="px-5 py-3 text-slate-500">${s.school || '—'}</td>
+          <td class="px-5 py-3 text-slate-500 text-xs">${new Date(s.createdAt).toLocaleDateString()}</td>
+        </tr>
+      `).join('');
+    }
+
+    function handleUpload(e) {
+      e.preventDefault();
+      const year = document.getElementById('upYear').value;
+      const subject = document.getElementById('upSubject').value;
+      const category = document.getElementById('upCategory').value;
+      const title = document.getElementById('upTitle').value.trim();
+      let fileUrl = document.getElementById('upFileUrl').value.trim();
+      const fileInput = document.getElementById('upFile');
+
+      // If local file selected, create object URL (temporary for demo)
+      if (fileInput.files && fileInput.files[0]) {
+        fileUrl = URL.createObjectURL(fileInput.files[0]);
+      }
+
+      if (!fileUrl) {
+        showToast('Please provide a file URL or select a file', true);
+        return;
+      }
+
+      const materials = getMaterials();
+      const newMat = {
+        id: Date.now(),
+        year,
+        subject,
+        category,
+        title,
+        fileUrl,
+        uploadedAt: new Date().toISOString()
+      };
+      materials.push(newMat);
+      saveMaterials(materials);
+
+      document.getElementById('uploadForm').reset();
+      showToast('Material uploaded successfully!');
+      showInstTab('materials');
+    }
+
+    function renderInstMaterials() {
+      const materials = getMaterials().sort((a,b) => new Date(b.uploadedAt) - new Date(a.uploadedAt));
+      const list = document.getElementById('instMaterialsList');
+
+      if (materials.length === 0) {
+        list.innerHTML = `<div class="bg-white rounded-2xl p-10 text-center text-slate-400">No materials uploaded yet.</div>`;
+        return;
+      }
+
+      list.innerHTML = materials.map(m => `
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex items-center justify-between">
+          <div>
+            <p class="font-medium">${m.title}</p>
+            <p class="text-xs text-slate-500">${m.year} · ${m.subject} · ${m.category}</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="viewDocument('${m.fileUrl}', '${m.title.replace(/'/g, "\\'")}')" class="px-3 py-1.5 text-sm bg-primary text-white rounded-lg">View</button>
+            <button onclick="deleteMaterial(${m.id})" class="px-3 py-1.5 text-sm bg-red-50 text-red-600 rounded-lg hover:bg-red-100">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function deleteMaterial(id) {
+      if (!confirm('Delete this material?')) return;
+      let materials = getMaterials().filter(m => m.id !== id);
+      saveMaterials(materials);
+      renderInstMaterials();
+      showToast('Material deleted');
+    }
+
+    // ==================== VIEWER ====================
+    function viewDocument(url, title) {
+      document.getElementById('viewerTitle').textContent = title;
+      document.getElementById('viewerDownload').href = url;
+      const frame = document.getElementById('viewerFrame');
+      const fallback = document.getElementById('viewerFallback');
+
+      // Try to embed PDFs and common types
+      if (url.includes('.pdf') || url.includes('pdf') || url.startsWith('blob:')) {
+        frame.src = url;
+        frame.classList.remove('hidden');
+        fallback.classList.add('hidden');
+      } else {
+        frame.src = '';
+        frame.classList.add('hidden');
+        fallback.classList.remove('hidden');
+      }
+      document.getElementById('viewerModal').classList.remove('hidden');
+    }
+
+    function closeViewer() {
+      document.getElementById('viewerModal').classList.add('hidden');
+      document.getElementById('viewerFrame').src = '';
+    }
+
+    // ==================== TOAST ====================
+    function showToast(msg, isError = false) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.className = `fixed bottom-6 right-6 px-5 py-3 rounded-xl shadow-lg transform transition-all duration-300 z-50 ${isError ? 'bg-red-600' : 'bg-dark'} text-white translate-y-0 opacity-100`;
+      setTimeout(() => {
+        t.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // ==================== INIT ====================
+    window.onload = function() {
+      const session = localStorage.getItem('eemonese_session');
+      if (session) {
+        currentUser = JSON.parse(session);
+        if (currentUser.role === 'instructor') openInstructorDashboard();
+        else openStudentDashboard();
+      }
+    };
+  </script>
+</body>
+</html>
